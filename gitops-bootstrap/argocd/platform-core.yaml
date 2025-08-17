@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: app-of-apps
+  name: platform-core
   namespace: argocd
 spec:
   generators:
   - git:
-      repoURL: https://github.com/icklers/idp-tutorial.git
+      repoURL: __YOUR_PLATFORM_GITOPS_REPO_URL__
       revision: HEAD
       directories:
-      - path: apps/*
+      - path: platform-core/*
   template:
     metadata:
       name: '{{path.basename}}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/icklers/idp-tutorial.git
+        repoURL: __YOUR_PLATFORM_GITOPS_REPO_URL__
         targetRevision: HEAD
         path: '{{path}}'
       destination:
