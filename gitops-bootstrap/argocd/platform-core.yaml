@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: __YOUR_PLATFORM_GITOPS_REPO_URL__
+      repoURL: https://github.com/icklers/platform-gitops-demo.git
       revision: HEAD
       directories:
       - path: platform-core
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: __YOUR_PLATFORM_GITOPS_REPO_URL__
+        repoURL: https://github.com/icklers/platform-gitops-demo.git
         targetRevision: HEAD
         path: '{{path}}'
       destination:
