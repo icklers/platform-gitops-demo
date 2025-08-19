@@ -82,4 +82,4 @@ This configuration tells Alertmanager to send any alert with `severity: critical
 
 Like all our other configuration, these `PrometheusRule` and Alertmanager config files should be stored in your `platform` repository and managed via GitOps. This ensures that your alerting and monitoring strategy evolves along with your infrastructure.
 
-**➡️ [Next Section: Providers](../providers/azure/01-setup.md)**
+**➡️ [Next Section: Advanced Topics](../advanced/index.md)**

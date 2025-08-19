@@ -12,6 +12,15 @@
         "--rm",
         "mcp/memory"
       ]
+    },
+    "kubernetes": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/kubernetes"
+      ]
     }
   }
 }

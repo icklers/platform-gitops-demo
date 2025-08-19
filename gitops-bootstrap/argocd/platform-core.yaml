@@ -9,7 +9,7 @@ spec:
       repoURL: __YOUR_PLATFORM_GITOPS_REPO_URL__
       revision: HEAD
       directories:
-      - path: platform-core/*
+      - path: platform-core
   template:
     metadata:
       name: '{{path.basename}}'
@@ -26,3 +26,6 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ApplyOutOfSyncOnly=true

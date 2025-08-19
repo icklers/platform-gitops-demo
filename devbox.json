@@ -1,11 +1,12 @@
 {
   "packages": [
-    "argocd@latest",
-    "oh-my-zsh@latest",
-    "zsh@latest",
+    "git@latest",
     "kubectl@latest",
     "gh@latest",
-    "uv@latest"
+    "uv@latest",
+    "kind@latest",
+    "kubeseal@latest",
+    "azure-cli@latest"
   ],
   "shell": {
     "init_hook": [
@@ -16,12 +17,15 @@
     ],
     "scripts": { 
       "setup-tools": [
+        "mkdir -p ~/bin/",
         "uv pip install -r pyproject.toml",
-        "curl -sL \"https://raw.githubusercontent.com/crossplane/crossplane/main/install.sh\" | sh > /dev/null",
-        "mkdir -p ~/bin/ && mv crossplane ~/bin/",
+        "[ ! -e ~/bin/crossplane ] && curl -sL \"https://raw.githubusercontent.com/crossplane/crossplane/main/install.sh\" | sh > /dev/null",
+        "mv crossplane ~/bin/ && chmod +x ~/bin/crossplane",
+        "[ ! -e ~/bin/argocd ] && curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64 && mv argocd-linux-amd64 ~/bin/argocd && chmod +x ~/bin/argocd",
         "echo 'export PATH=~/bin:$PATH' >> ~/.profile",
         "source ~/.profile",
-        "echo \"Crossplane:\" $(crossplane version --client)"    
+        "echo \"Crossplane:\" $(crossplane version --client)",
+        "echo $(argocd version --client | head -1)"
       ]
     }
   }
